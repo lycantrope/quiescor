@@ -27,11 +27,8 @@ fn main() {
     let web_options = eframe::WebOptions::default();
 
     wasm_bindgen_futures::spawn_local(async {
-        eframe::start_web(
-            "the_canvas_id", // hardcode it
-            web_options,
-            Box::new(|cc| Box::new(eframe_template::TemplateApp::new(cc))),
-        )
+        quiescor::WebHandle::new()
+        .start("quiescor_wasm")
         .await
         .expect("failed to start eframe");
     });
